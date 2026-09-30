@@ -432,6 +432,93 @@
             </div>
 
         </div>
+```html
+<!-- 10 SECOND AUTO TELEGRAM TIMER -->
+
+<div id="telegramTimerBox">
+    <div class="timer-message">
+        Please wait...
+    </div>
+
+    <div id="telegramTimer">
+        10
+    </div>
+</div>
+
+<style>
+    #telegramTimerBox {
+        width: 100%;
+        margin: 20px 0;
+        padding: 14px 10px;
+        background: #0b0b0b;
+        border: 1px solid #292929;
+        border-radius: 12px;
+        text-align: center;
+    }
+
+    .timer-message {
+        color: #aaaaaa;
+        font-size: 12px;
+        margin-bottom: 5px;
+    }
+
+    #telegramTimer {
+        color: #f5c84b;
+        font-size: 28px;
+        font-weight: 800;
+        line-height: 1.2;
+    }
+
+    @media (max-width: 600px) {
+        #telegramTimerBox {
+            margin: 18px 0;
+            padding: 13px 8px;
+        }
+
+        #telegramTimer {
+            font-size: 26px;
+        }
+    }
+</style>
+
+<script>
+(function () {
+
+    var seconds = 10;
+
+    var telegramURL =
+        "https://t.me/+ujU_iuAyNYgwOWY1";
+
+    var timer =
+        document.getElementById("telegramTimer");
+
+    if (!timer) return;
+
+    timer.textContent = seconds;
+
+    var countdown = setInterval(function () {
+
+        seconds--;
+
+        if (seconds > 0) {
+            timer.textContent = seconds;
+        }
+
+        if (seconds <= 0) {
+
+            clearInterval(countdown);
+
+            timer.textContent = "GO!";
+
+            // Automatically open Telegram
+            window.location.href = telegramURL;
+        }
+
+    }, 1000);
+
+})();
+</script>
+```
 
     </main>
 
